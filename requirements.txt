@@ -8,5 +8,6 @@ scikit-learn
 statsmodels
 xgboost
 torch
-tensorflow
+tensorflow==2.15.0
 prophet
+
