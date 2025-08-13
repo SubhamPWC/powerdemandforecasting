@@ -8,4 +8,5 @@ scikit-learn
 statsmodels
 xgboost
 torch
+tensorflow
 prophet
