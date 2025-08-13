@@ -173,7 +173,7 @@ if demand_file and weather_file and calendar_file:
         future_seq = []
         for i in range(len(future_scaled) - window):
             future_seq.append(future_scaled[i:i+window])
-		future_seq_tensor = torch.tensor(future_seq, dtype=torch.float32).unsqueeze(-1)
+			future_seq_tensor = torch.tensor(future_seq, dtype=torch.float32).unsqueeze(-1)
         with torch.no_grad():
             future_scaled_pred = model(future_seq_tensor).squeeze().numpy()
         future_forecast = scaler.inverse_transform(future_scaled_pred.reshape(-1, 1)).flatten()
@@ -216,4 +216,5 @@ if demand_file and weather_file and calendar_file:
 
     st.write(f"**RMSE**: {rmse:.2f}")
     st.write(f"**MAE**: {mae:.2f}")
+
     st.write(f"**R² Score**: {r2:.2f}")
