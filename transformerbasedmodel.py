@@ -18,8 +18,8 @@ if uploaded_file:
 
     # 🕒 Parse datetime
     df['date'] = pd.to_datetime(df['date'])
-	df['hour'] = pd.to_datetime(df['time'],format='%H:%M:%S').dt.hour
-	df['datetime'] = df['date'] + pd.to_timedelta(df['hour'], unit='h')
+    df['hour'] = pd.to_datetime(df['time'],format='%H:%M:%S').dt.hour
+    df['datetime'] = df['date'] + pd.to_timedelta(df['hour'], unit='h')
 
     # 🧠 Time features
     df['hour'] = df['datetime'].dt.hour
@@ -175,15 +175,15 @@ if uploaded_file:
 
     st.subheader("📈 Forecast Preview: Actual vs Forecasted Demand")
 
-	# 🕒 Create datetime index
-	combined_df['datetime'] = pd.to_datetime(combined_df['date'] + ' ' + combined_df['time'])
-	combined_df = combined_df.sort_values('datetime')
+    # 🕒 Create datetime index
+    combined_df['datetime'] = pd.to_datetime(combined_df['date'] + ' ' + combined_df['time'])
+    combined_df = combined_df.sort_values('datetime')
 
-	# 📊 Select relevant columns
-	plot_df = combined_df.set_index('datetime')[['Actual Demand', 'Forecasted Demand']]
+    # 📊 Select relevant columns
+    plot_df = combined_df.set_index('datetime')[['Actual Demand', 'Forecasted Demand']]
 
-	# 📈 Plot both series
-	st.line_chart(plot_df)
+    # 📈 Plot both series
+    st.line_chart(plot_df)
 
 
     # 📁 Export Combined Forecast CSV
